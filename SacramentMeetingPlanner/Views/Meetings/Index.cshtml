@@ -1,0 +1,53 @@
+﻿@model SacramentMeetingPlanner.Models.MeetingIndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Meetings History</h1>
+
+<p>
+    <a asp-action="Create">Plan a new Meeting</a>
+</p>
+
+<div class="row">
+@foreach (var item in Model.Meetings) {
+    
+    <div class="col-sm-4">
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            @Html.DisplayFor(modelItem => item.MeetingDate)
+        </div>
+        <table class="table">
+            <tr>
+                <th>Speakers</th>
+                <th>Subject</th>
+            </tr>
+            @foreach (var speaker in item.Speakers){
+                <tr>
+                    <td>
+                        @Html.DisplayFor(speakerItem => speaker.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(speakerItem => speaker.Subject)
+                    </td>
+                </tr>            
+            }
+@*            <tr>
+                <td>
+
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+
+            </tr>*@
+
+        </table>
+                <a class ="btn btn-primary col-6 mx-auto stretched-link"asp-action="Details" asp-route-id="@item.ID">Meeting Details</a>
+    </div>
+    </div>
+       
+}
+</div>
+   

@@ -1,0 +1,84 @@
+﻿@using SacramentMeetingPlanner.Enums
+@model SacramentMeetingPlanner.Models.Meeting
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Meeting</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="MeetingDate" class="control-label"></label>
+                <input asp-for="MeetingDate" class="form-control" />
+                <span asp-validation-for="MeetingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Conducting" class="control-label"></label>
+                <input asp-for="Conducting" class="form-control" />
+                <span asp-validation-for="Conducting" class="text-danger"></span>
+            </div>
+
+              
+            <div class="form-group">
+                <label asp-for="OpeningSongHymn" class="control-label"></label><br />
+                <select asp-for="OpeningSongHymn" class="form-control" asp-items="Html.GetEnumSelectList<HymnsEnum>()">
+                    <option value="">Please choose the OpeningSong</option>
+                </select>
+                <span asp-validation-for="OpeningSongHymn" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SacramentHymnChoice" class="control-label"></label><br />
+                <select asp-for="SacramentHymnChoice" class="form-control" asp-items="Html.GetEnumSelectList<HymnsEnum>()">
+                    <option value="">Please choose the Sacrament Hymn </option>
+                </select>
+                <span asp-validation-for="SacramentHymnChoice" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ClosingSongHymn" class="control-label"></label><br />
+                <select asp-for="ClosingSongHymn" class="form-control" asp-items="Html.GetEnumSelectList<HymnsEnum>()">
+                    <option value="">Please choose the Closing Song</option>
+                </select>
+                <span asp-validation-for="ClosingSongHymn" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IntermediateMusicalNumberHymn" class="control-label"></label><br />
+                <select asp-for="IntermediateMusicalNumberHymn" class="form-control" asp-items="Html.GetEnumSelectList<HymnsEnum>()">
+                    <option value="">Please choose the Intermediate Musical Number</option>
+                </select>
+                <span asp-validation-for="IntermediateMusicalNumberHymn" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Invocation" class="control-label"></label>
+                <input asp-for="Invocation" class="form-control" />
+                <span asp-validation-for="Invocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Benediction" class="control-label"></label>
+                <input asp-for="Benediction" class="form-control" />
+                <span asp-validation-for="Benediction" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
